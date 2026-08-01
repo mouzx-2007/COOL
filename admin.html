@@ -28,6 +28,107 @@
             padding: 20px;
         }
 
+        /* ------------------ ستايل واجهة تسجيل الدخول ------------------ */
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+            text-align: center;
+            color: white;
+        }
+
+        .login-container h2 {
+            margin-bottom: 25px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .login-container h2 span {
+            color: var(--primary-color);
+        }
+
+        .login-group {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+        .login-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #e0e0e0;
+        }
+
+        .login-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .login-group input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 8px rgba(255, 94, 20, 0.5);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #ff416c, var(--primary-color));
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-login:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .login-error {
+            color: #ff4b2b;
+            font-size: 14px;
+            margin-top: 15px;
+            display: none;
+            background: rgba(255, 75, 43, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* ------------------ ستايل لوحة التحكم الأساسية ------------------ */
+        /* نخفي لوحة التحكم افتراضياً حتى ينجح تسجيل الدخول */
+        #main-dashboard {
+            display: none;
+        }
+
         header {
             background-color: var(--secondary-color);
             color: white;
@@ -36,8 +137,27 @@
             border-radius: 12px;
             margin-bottom: 30px;
             border-bottom: 4px solid var(--primary-color);
+            position: relative;
         }
 
+        .btn-logout {
+            background-color: var(--danger-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
+            transition: background 0.3s, transform 0.2s;
+            display: inline-block;
+            margin-bottom: 15px; /* يخلي مسافة بينه وبين العنوان الرئيسي */
+        }
+
+        .btn-logout:hover {
+            background-color: #bd2130;
+            transform: scale(1.05); /* حركة خفيفة كي تحط عليه الفأرة */
+        }
         h1 { font-size: 26px; margin-bottom: 5px; }
         p.subtitle { color: #a0a0a0; font-size: 14px; }
 
@@ -177,94 +297,163 @@
 </head>
 <body>
 
-    <header>
-        <h1>لوحة تحكم مطعم COOL ومأكولاته السريعة</h1>
-        <p class="subtitle">إدارة قائمة الطعام تلقائياً بدون تعقيد مخازن الفايربيس</p>
-    </header>
+    <!-- واجهة تسجيل الدخول المنبثقة -->
+    <div class="login-overlay" id="loginWrapper">
+        <div class="login-container">
+            <h2>لوحة تحكم <span>COOL</span></h2>
+            <form id="adminLoginForm">
+                <div class="login-group">
+                    <label>اسم المستخدم</label>
+                    <input type="text" id="loginUsername" required autocomplete="off" placeholder="Mouzx.dv أو Admin zaki">
+                </div>
+                <div class="login-group">
+                    <label>كلمة السر</label>
+                    <input type="password" id="loginPassword" required placeholder="أدخل كلمة السر">
+                </div>
+                <button type="submit" class="btn-login">تسجيل الدخول</button>
+                <div class="login-error" id="loginErrorMsg">اسم المستخدم أو كلمة السر خاطئة!</div>
+            </form>
+        </div>
+    </div>
 
-    <div class="dashboard-container">
-        <div class="sections-grid">
-            
-            <!-- قسم المنيو -->
-            <div class="card">
-                <h2>إضافة وجبة جديدة للمنيو</h2>
-                <form id="menu-form">
-                    <div class="form-group">
-                        <label>اسم الوجبة:</label>
-                        <input type="text" id="menu-title" required placeholder="مثال: Pizza Poulet">
-                    </div>
-                    <div class="form-group">
-                        <label>السعر والتفاصيل (دج):</label>
-                        <input type="text" id="menu-price" required placeholder="مثال: Normal: 450 DA">
-                    </div>
-                    <div class="form-group">
-                        <label>الصنف (Category):</label>
-                        <select id="menu-category" required>
-                            <option value="pizza">البيتزا 🍕</option>
-                            <option value="tacos">الطاكوس 🌯</option>
-                            <option value="sandwiches">السندويش والفاهيتاس 🥖</option>
-                            <option value="gratin">الغراتان 🥘</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>وصف مختصر:</label>
-                        <textarea id="menu-desc" required placeholder="مكونات خفيفة..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>اختر صورة الوجبة ديركت:</label>
-                        <input type="file" id="menu-image" accept="image/*" required>
-                    </div>
-                    <button type="submit" id="btn-save-menu">إضافة إلى المنيو الحقيقي</button>
-                </form>
+    <!-- لوحة التحكم الكاملة للمطعم -->
+    <div id="main-dashboard">
+        <header>
+            <button class="btn-logout" onclick="logoutAdmin()">تسجيل الخروج</button>
+            <h1>لوحة تحكم مطعم COOL ومأكولاته السريعة</h1>
+            <p class="subtitle" id="welcomeMessage">مرحباً بك في لوحة التحكم تلقائياً</p>
+        </header>
 
-                <h2 style="margin-top: 40px;">الوجبات المتوفرة حالياً في الموقع</h2>
-                <div class="items-list" id="menu-items-container"></div>
+        <div class="dashboard-container">
+            <div class="sections-grid">
+                
+                <!-- قسم المنيو -->
+                <div class="card">
+                    <h2>إضافة وجبة جديدة للمنيو</h2>
+                    <form id="menu-form">
+                        <div class="form-group">
+                            <label>اسم الوجبة:</label>
+                            <input type="text" id="menu-title" required placeholder="مثال: Pizza Poulet">
+                        </div>
+                        <div class="form-group">
+                            <label>السعر والتفاصيل (دج):</label>
+                            <input type="text" id="menu-price" required placeholder="مثال: Normal: 450 DA">
+                        </div>
+                        <div class="form-group">
+                            <label>الصنف (Category):</label>
+                            <select id="menu-category" required>
+                                <option value="pizza">البيتزا 🍕</option>
+                                <option value="tacos">الطاكوس 🌯</option>
+                                <option value="sandwiches">السندويش والفاهيتاس 🥖</option>
+                                <option value="gratin">الغراتان 🥘</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>وصف مختصر:</label>
+                            <textarea id="menu-desc" required placeholder="مكونات خفيفة..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>اختر صورة الوجبة ديركت:</label>
+                            <input type="file" id="menu-image" accept="image/*" required>
+                        </div>
+                        <button type="submit" id="btn-save-menu">إضافة إلى المنيو الحقيقي</button>
+                    </form>
+
+                    <h2 style="margin-top: 40px;">الوجبات المتوفرة حالياً في الموقع</h2>
+                    <div class="items-list" id="menu-items-container"></div>
+                </div>
+
+                <!-- قسم العروض -->
+                <div class="card">
+                    <h2>إضافة عرض ترويجي جديد 🔥</h2>
+                    <form id="offer-form">
+                        <div class="form-group">
+                            <label>عنوان العرض:</label>
+                            <input type="text" id="offer-title" required placeholder="مثال: ميكس COOL الثنائي">
+                        </div>
+                        <div class="form-group">
+                            <label>تفاصيل ووصف العرض:</label>
+                            <textarea id="offer-desc" required placeholder="زوج (2) بيتزات من اختيارك..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>اختر صورة العرض ديركت:</label>
+                            <input type="file" id="offer-image" accept="image/*" required>
+                        </div>
+                        <button type="submit" id="btn-save-offer" style="background-color: var(--secondary-color);">إطلق العرض الآن</button>
+                    </form>
+
+                    <h2 style="margin-top: 40px;">العروض المفعّلة حالياً بالصفحة</h2>
+                    <div class="items-list" id="offers-container"></div>
+                </div>
+
             </div>
-
-            <!-- قسم العروض -->
-            <div class="card">
-                <h2>إضافة عرض ترويجي جديد 🔥</h2>
-                <form id="offer-form">
-                    <div class="form-group">
-                        <label>عنوان العرض:</label>
-                        <input type="text" id="offer-title" required placeholder="مثال: ميكس COOL الثنائي">
-                    </div>
-                    <div class="form-group">
-                        <label>تفاصيل ووصف العرض:</label>
-                        <textarea id="offer-desc" required placeholder="زوج (2) بيتزات من اختيارك..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>اختر صورة العرض ديركت:</label>
-                        <input type="file" id="offer-image" accept="image/*" required>
-                    </div>
-                    <button type="submit" id="btn-save-offer" style="background-color: var(--secondary-color);">إطلق العرض الآن</button>
-                </form>
-
-                <h2 style="margin-top: 40px;">العروض المفعّلة حالياً بالصفحة</h2>
-                <div class="items-list" id="offers-container"></div>
-            </div>
-
         </div>
     </div>
 
     <script>
-        // ضع هنا إعدادات الـ Firebase الخاصة بك
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        // ------------------ سيستم الحسابات والأمان الحقيقي ------------------
+        const usersDatabase = {
+            "Mouzx.dv": "mouzx2026",
+            "Admin zaki": "zaki2026"
+        };
+
+        function checkAuth() {
+            const isLoggedIn = sessionStorage.getItem('coolAdminLoggedIn');
+            const currentUser = sessionStorage.getItem('coolAdminUser');
+            
+            if (isLoggedIn === 'true' && currentUser) {
+                document.getElementById('loginWrapper').style.display = 'none';
+                document.getElementById('main-dashboard').style.display = 'block';
+                document.getElementById('welcomeMessage').innerText = `مسجّل الدخول حالياً باسم: ${currentUser} 🛠️`;
+            } else {
+                document.getElementById('loginWrapper').style.display = 'flex';
+                document.getElementById('main-dashboard').style.display = 'none';
+            }
+        }
+
+        document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const userInp = document.getElementById('loginUsername').value.trim();
+            const passInp = document.getElementById('loginPassword').value;
+            const errorMsg = document.getElementById('loginErrorMsg');
+
+            if (usersDatabase[userInp] && usersDatabase[userInp] === passInp) {
+                sessionStorage.setItem('coolAdminLoggedIn', 'true');
+                sessionStorage.setItem('coolAdminUser', userInp);
+                errorMsg.style.display = 'none';
+                document.getElementById('adminLoginForm').reset();
+                checkAuth(); // تحديث الواجهة فوراً لفتح لوحة التحكم
+            } else {
+                errorMsg.style.display = 'block';
+                document.getElementById('loginPassword').value = '';
+            }
+        });
+
+        function logoutAdmin() {
+            sessionStorage.removeItem('coolAdminLoggedIn');
+            sessionStorage.removeItem('coolAdminUser');
+            window.location.reload();
+        }
+
+        // تشغيل التحقق فور فتح الصفحة لمنع التخطي
+        checkAuth();
+
+        // ------------------ إعدادات الـ Firebase الخاصة بك ------------------
         const firebaseConfig = {
-  apiKey: "AIzaSyD3HL6DQkrDV1GXZQXVtYAxa19FZktt2eg",
-  authDomain: "cool-restaurant.firebaseapp.com",
-  databaseURL: "https://cool-restaurant-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "cool-restaurant",
-  storageBucket: "cool-restaurant.firebasestorage.app",
-  messagingSenderId: "72216191329",
-  appId: "1:72216191329:web:be3cb4cf500cfe171fa520",
-  measurementId: "G-DQ9WQ6LX68"
-};
+            apiKey: "AIzaSyD3HL6DQkrDV1GXZQXVtYAxa19FZktt2eg",
+            authDomain: "cool-restaurant.firebaseapp.com",
+            databaseURL: "https://cool-restaurant-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "cool-restaurant",
+            storageBucket: "cool-restaurant.firebasestorage.app",
+            messagingSenderId: "72216191329",
+            appId: "1:72216191329:web:be3cb4cf500cfe171fa520",
+            measurementId: "G-DQ9WQ6LX68"
+        };
         
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
 
-        // 🛑 حط هنا الـ API Key تاعك لي جبتو من موقع imgbb ديركت
+        // الـ API Key الخاص بموقع imgbb
         const IMGBB_API_KEY = '6c403f46b441b3073d27d558fdc3874c';
 
         // دالة مساعدة لرفع الصور سحابياً عبر الـ API
@@ -279,7 +468,7 @@
             
             let data = await response.json();
             if (data.success) {
-                return data.data.url; // إرجاع رابط الصورة المباشر
+                return data.data.url;
             } else {
                 throw new Error("خطأ في رفع الصورة للسيرفر المجاني");
             }
@@ -297,7 +486,7 @@
 
             try {
                 const imageFile = document.getElementById('menu-image').files[0];
-                const imageUrl = await uploadImageToImgBB(imageFile); // الرفع التلقائي الخفي
+                const imageUrl = await uploadImageToImgBB(imageFile);
 
                 const newMenuRef = database.ref('menu').push();
                 await newMenuRef.set({
@@ -319,7 +508,6 @@
             }
         });
 
-        // جلب وحذف عناصر المنيو تلقائياً
         database.ref('menu').on('value', snapshot => {
             menuItemsContainer.innerHTML = '';
             snapshot.forEach(childSnapshot => {
