@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">    <meta name="description" content="مطعم COOL في ولاية شلف يقدم أشهى المأكولات السريعة من البيتزا، الطاكوس، السندويشات، والفاهيتاس مع عروض حصرية.">
+    <title>COOL Restaurant | الشلف</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="logocool.png">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- القائمة العلوية (Navbar) -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="#">COOL<span>.</span></a>
+                <img src="logocool.png" alt="Cool Restaurant Logo" class="logo-img">
+            </div>
+            <nav class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active">الرئيسية</a>
+                <a href="#offers" class="nav-link">العروض الحصرية</a> 
+                <a href="#menu" class="nav-link">قائمة الطعام</a>
+                <a href="#about" class="nav-link">عن المطعم</a>
+                <a href="#branches" class="nav-link">فروعنا</a>
+                <a href="#contact" class="nav-link">اتصل بنا</a>
+            </nav>
+            <div class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- القسم الرئيسي (Hero Section) -->
+    <section id="home" class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <span class="badge">بإشراف صانع المحتوى زكرياء بن سونة</span>
+                <h1>تذوق المتعة الحقيقية في مطعم <span class="text-primary">COOL</span></h1>
+                <p>المطعم الأكثر عصريّة في ولاية شلف. نجمع لك بين النكهة الخيالية، الجودة العالية، والسعر الذي يناسبك. أطباقنا صُنعت بحب لتمنحك تجربة لا تُنسى!</p>
+                <div class="hero-btns">
+                    <a href="#menu" class="btn btn-primary">اكتشف المنيو</a>
+                    <a href="#offers" class="btn btn-secondary">عروض اليوم</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-bg-circle"></div>
+                <!-- صورة تعبيرية لبيتزا عصرية احترافية وعالية الجودة -->
+                <img src="mtkhafsh.png" alt="Cool Pizza Presentation">
+            </div>
+        </div>
+    </section>
+<hr>
+    <!-- قسم العروض الحية والتوفير المتجددة (Offers Section) -->
+    <section id="offers" class="offers-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="sub-title">وفر أكتر مع COOL</span>
+                <h2>العروض الحصرية والمجنونة 🔥</h2>
+                <p>سواء كان عرضاً يومياً، أسبوعياً، أو شهرياً.. عروضنا ما تخلاصش وتناسب جيبك!</p>
+            </div>
+
+       <div class="offers-grid" id="offers-container">                
+                <!--يتعمرو عروض من لوحة تحكم تلقاءيا-->
+        </div>
+    </section>
+<hr>
+    <!-- قسم قائمة الطعام التفاعلية (Menu Section) -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="sub-title">اختر وجبتك</span>
+                <h2>منيو مطعم COOL المتنوع 📋</h2>
+                <p>تصفح أشهى المأكولات، من البيتزا الإيطالية الخفيفة إلى السندويشات العصرية والتحليات الساحرة.</p>
+            </div>
+
+           <!-- أزرار التصفية الفئوية المحدثة لتشمل فئات الصور الحقيقية -->
+            <div class="menu-tabs">
+                <button class="tab-btn active" data-filter="all">الكل</button>
+                <button class="tab-btn" data-filter="pizza">البيتزا 🍕</button>
+                <button class="tab-btn" data-filter="tacos">الطاكوس 🌯</button>
+                <button class="tab-btn" data-filter="sandwiches">السندويش والفاهيتاس 🥖</button>
+                <button class="tab-btn" data-filter="gratin">الغراتان 🥘</button>
+            </div>
+
+<div class="menu-grid" id="menu-container">                
+                        <!--تتعمر قائمة الطعام تلقائيا من لوحة تحكم-->
+            </div>
+        <hr>
+ <!-- قسم عن المطعم وزكرياء بن سونة (About Section) -->
+    <section id="about" class="about-section">
+        <div class="container about-container">
+            <div class="about-image">
+                <img src="zaki.png" alt="Zakaria Ben Souna Cool Chef">
+            </div>
+            <div class="about-content">
+                <span class="sub-title">قصة النجاح</span>
+                <h2>من صناعة المحتوى إلى صناعة النكهة!</h2>
+                <p>مطعم <strong>COOL</strong> ليس مجرد مطعم عابر، بل هو فكرة وتجسيد لشغف صانع المحتوى ابن ولاية شلف <strong>زكرياء بن سونة</strong>. أردنا خلق مساحة عصرية تجمع الشباب والعائلات الشلفاوية لتقديم وجبات سريعة ومبتكرة بجودة خيالية وبلمسة إبداعية فريدة.</p>
+                <div class="about-features">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="feature-text"><h4>مكونات طازجة يومياً</h4><p>نختار لحومنا وخضرواتنا بعناية فائقة كل صباح.</p></div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="feature-text"><h4>خلطات وصوصات سرية</h4><p>تذوق نكهات حصرية لن تجدها في أي مكان آخر بشلف.</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <!-- قسم الفروع (Branches Section) -->
+    <section id="branches" class="branches-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="sub-title">أين تجدنا؟</span>
+                <h2>فروع مطعم COOL في شلف 📍</h2>
+                <p>مرحباً بكم في فروعنا الجاهزة لخدمتكم واستقبالكم بأعلى مستويات الحفاوة الكرم.</p>
+            </div>
+
+            <div class="branches-grid">
+                <!-- فرع حي السلام -->
+                <div class="branch-card">
+                    <div class="branch-icon"><i class="fas fa-map-marked-alt"></i></div>
+                    <h3>فرع البقعة</h3>
+                    <p class="branch-meta"><i class="fas fa-map-marker-alt"></i> حي السلام (الموقع الاستراتيجي الجديد)، شلف</p>
+                    <p class="branch-meta"><i class="fas fa-phone-alt"></i> 0557908765</p>
+                    <p class="branch-meta"><i class="fas fa-clock"></i> مفتوح من 11:00 صباحاً إلى 11:00 مساءً</p>
+                    <a href="tel:0557908765" class="btn btn-secondary btn-sm"><i class="fas fa-phone"></i> اتصل بالفرع</a>
+                </div>
+
+                <!-- فرع وسط المدينة -->
+                <div class="branch-card accent">
+                    <div class="branch-icon"><i class="fas fa-city"></i></div>
+                    <h3>فرع وسط المدينة (La Cité)</h3>
+                    <p class="branch-meta"><i class="fas fa-map-marker-alt"></i> المقر الرئيسي بوسط مدينة شلف، الجزائر</p>
+                    <p class="branch-meta"><i class="fas fa-phone-alt"></i> 0551483230</p>
+                    <p class="branch-meta"><i class="fas fa-clock"></i> مفتوح من 11:00 صباحاً إلى 12:00 ليلاً</p>
+                    <a href="tel:0551483230" class="btn btn-primary btn-sm"><i class="fas fa-phone"></i> اتصل بالفرع</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- تذييل الصفحة وقنوات الاتصال (Footer & Contact) -->
+    <footer id="contact" class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-info">
+                <div class="logo">
+                    <a href="#">COOL<span>.</span></a>
+                </div>
+                <p>مشروع شبابي طموح لتقديم أحدث وألذ الوجبات السريعة في الجزائر تحت إشراف زكرياء بن سونة. تابعنا ولا تفوت العروض الجبارة!</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1CcfP7KkYE/?mibextid=wwXIfr" rel="noopener noreferrer" target="_blank"  class="social-icon fb" title="تابعنا على فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/cool.officiel_/" rel="noopener noreferrer" target="_blank" class="social-icon ig" title="تابعنا على انستغرام"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#offers">العروض الحالية</a></li>
+                    <li><a href="#menu">قائمة الطعام</a></li>
+                    <li><a href="#branches">الفروع والتوصيل</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>أرقام التوصيل والطلب السريع</h3>
+                <p><i class="fas fa-phone-alt text-primary"></i> فرع حي السلام: 0557908765</p>
+                <p><i class="fas fa-phone-alt text-primary"></i> فرع وسط المدينة: 0551483230</p>
+                <p><i class="fas fa-envelope text-primary"></i> contact@cool-chlef.dz</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p><strong>&copy; 2026-2025</strong> جميع الحقوق محفوظة لمطعم <strong>COOL</strong> | تم التطوير بواسطة <strong>Mouzx.dvtools</strong></p>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <!-- استدعاء مكتبات الفايربيس للـ index -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    
+    <script>
+        // إعدادات الفايربيس الحقيقية تاعك
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyD3HL6DQkrDV1GXZQXVtYAxa19FZktt2eg",
+  authDomain: "cool-restaurant.firebaseapp.com",
+  databaseURL: "https://cool-restaurant-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "cool-restaurant",
+  storageBucket: "cool-restaurant.firebasestorage.app",
+  messagingSenderId: "72216191329",
+  appId: "1:72216191329:web:be3cb4cf500cfe171fa520",
+  measurementId: "G-DQ9WQ6LX68"
+};
+        
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+    </script>
+    
+    <!-- ملف الـ JS الرئيسي خليه هو اللخر دايماً -->
+    <script src="script.js"></script>
+</body>
+</body>
+</html>
